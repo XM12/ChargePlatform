@@ -1,0 +1,66 @@
+android {
+    flavorDimensions 'channel'
+
+    productFlavors {
+        none {
+            dimension 'channel'
+        }
+
+        arm32{
+            dimension 'channel'
+            ndk {
+                //noinspection ChromeOsAbiSupport
+                abiFilters = ['armeabi-v7a']
+            }
+        }
+
+        arm64{
+            dimension 'channel'
+            ndk {
+                //noinspection ChromeOsAbiSupport
+                abiFilters = ['arm64-v8a']
+            }
+        }
+
+        huawei {
+            dimension 'channel'
+            applicationIdSuffix '.huawei'
+        }
+
+        xiaomi {
+            dimension 'channel'
+            applicationIdSuffix '.xiaomi'
+        }
+
+        vivo {
+            dimension 'channel'
+            applicationIdSuffix '.vivo'
+        }
+
+        oppo {
+            dimension 'channel'
+            applicationIdSuffix '.oppo'
+        }
+
+        tencent {
+            dimension 'channel'
+            applicationIdSuffix '.tencent'
+        }
+    }
+
+    productFlavors.all {
+        flavor -> flavor.manifestPlaceholders.put("APP_CHANNEL_VALUE", name)
+    }
+
+    applicationVariants.all { variant ->
+        variant.outputs.all {
+            if (variant.buildType.name == 'release') {
+                outputFileName = "charge-v${variant.mergedFlavor.versionName}-${new Date().format('MMdd')}-${variant.productFlavors[0].name}-${variant.buildType.name}"
+            } else if (variant.buildType.name == 'debug') {
+                outputFileName = "charge-v${variant.mergedFlavor.versionName}-${new Date().format('MMdd')}-${variant.productFlavors[0].name}-${variant.buildType.name}"
+            }
+            outputFileName += ".apk"
+//            variant.getPackageApplication().outputDirectory = new File(project.rootDir.absolutePath + "/app/" + variant.buildType.name)
+        }
+    }
+}

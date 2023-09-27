@@ -14,3 +14,11 @@
 .cxx
 local.properties
 .idea/
+/app/debug
+/app/release
+/app/huawei
+/app/xiaomi
+/app/vivo
+/app/oppo
+/app/tencent
+/local_repo/**/build/

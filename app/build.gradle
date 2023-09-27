@@ -2,33 +2,132 @@ plugins {
     id 'com.android.application'
     id 'org.jetbrains.kotlin.android'
 }
+apply from: rootProject.file("channel.gradle")
 
 android {
-    namespace 'com.gaia.chargeplatform'
-    compileSdk 33
+    namespace rootProject.ext.android['applicationId']
+    compileSdk rootProject.ext.android['defualt_compileSdk']
+
+    def code = getVersionCode()
+    def name = getVersionName()
 
     defaultConfig {
-        applicationId "com.gaia.chargeplatform"
-        minSdk 24
-        targetSdk 33
-        versionCode 1
-        versionName "1.0"
+        applicationId rootProject.ext.android['applicationId']
+        minSdk rootProject.ext.android['defualt_minSdk']
+        targetSdk rootProject.ext.android['defualt_targetSdk']
+
+        versionCode code
+        versionName name
+
+        multiDexEnabled true
+        resConfigs("en", "zh", "zh-rCN")
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+
+        ndk {
+            //noinspection ChromeOsAbiSupport
+            abiFilters "armeabi-v7a", "arm64-v8a"
+        }
+    }
+
+    signingConfigs {
+        debug {
+            storeFile file('..\\key\\charge.jks')
+            storePassword 'charge'
+            keyPassword 'charge'
+            keyAlias 'key0'
+            v1SigningEnabled true
+            v2SigningEnabled true
+        }
+
+        release {
+            storeFile file('..\\key\\charge.jks')
+            storePassword 'charge'
+            keyPassword 'charge'
+            keyAlias 'key0'
+            v1SigningEnabled true
+            v2SigningEnabled true
+        }
     }
 
     buildTypes {
-        release {
-            minifyEnabled false
+        local {
+            minifyEnabled true
+            shrinkResources true
+            multiDexEnabled true
+            zipAlignEnabled true
+            signingConfig signingConfigs.release
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+            applicationIdSuffix '.release'
+            buildConfigField "String", "LOCAL_URL", rootProject.ext.api['local_url']
+            buildConfigField "String", "LOCAL_PERSONAL_URL", rootProject.ext.api['local_personal_url']
+            manifestPlaceholders = [CHANNEL_VALUE: "none"]
+        }
+
+        debug {
+            minifyEnabled false
+            shrinkResources false
+            multiDexEnabled true
+            zipAlignEnabled true
+            signingConfig signingConfigs.debug
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+            applicationIdSuffix '.debug'
+            buildConfigField "String", "DEBUG_URL", rootProject.ext.api['debug_url']
+            buildConfigField "String", "DEBUG_PERSONAL_URL", rootProject.ext.api['debug_personal_url']
+            manifestPlaceholders = [CHANNEL_VALUE: "none"]
+        }
+
+        release {
+            minifyEnabled true
+            shrinkResources true
+            multiDexEnabled true
+            zipAlignEnabled true
+            debuggable false
+            signingConfig signingConfigs.release
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+            applicationIdSuffix '.release'
+            buildConfigField "String", "RELEASE_URL", rootProject.ext.api['release_url']
+            buildConfigField "String", "RELEASE_PERSONAL_URL", rootProject.ext.api['release_personal_url']
+            manifestPlaceholders = [CHANNEL_VALUE: "none"]
         }
     }
+
     compileOptions {
-        sourceCompatibility JavaVersion.VERSION_1_8
-        targetCompatibility JavaVersion.VERSION_1_8
+        sourceCompatibility JavaVersion.VERSION_11
+        targetCompatibility JavaVersion.VERSION_11
     }
+
     kotlinOptions {
-        jvmTarget = '1.8'
+        jvmTarget = '11'
+    }
+}
+
+def getVersionCode() {
+    def versionFile = file('version.properties')
+    if (versionFile.canRead()) {
+        Properties properties = new Properties()
+        properties.load(new FileInputStream(versionFile))
+        def versionCode = properties['VERSION_CODE'].toInteger()
+        def runTasks = gradle.startParameter.taskNames
+        if (':app:assembleRelease' in runTasks || ':app:assembleDebug' in runTasks) {
+            properties['VERSION_CODE'] = (++versionCode).toString()
+            properties.store(versionFile.newWriter(), null)
+        }
+        return versionCode
+    } else {
+        throw new GradleException("Could not find version.properties!")
+    }
+}
+
+def getVersionName() {
+    def versionFile = file('version.properties')
+    if (versionFile.canRead()) {
+        Properties properties = new Properties()
+        properties.load(new FileInputStream(versionFile))
+        def versionName = properties['VERSION_NAME'].toString()
+        return versionName
+    } else {
+        throw new GradleException("Could not find version.properties!")
     }
 }
 

@@ -1,0 +1,98 @@
+ext {
+
+    android = [
+            applicationId      : 'com.gaia.chargeplatform',
+            defualt_compileSdk : 33,
+            defualt_targetSdk  : 33,
+            defualt_minSdk     : 24,
+            defualt_versionCode: 1,
+            defualt_versionName: '1.0.0'
+    ]
+
+    version = [
+            kotlinx_coroutines_version  : '1.6.4',
+            lifecycle_version           : '2.5.1',
+            retrofit2_coroutines_version: '0.9.2',
+            splashscreen_version        : '1.0.0-beta02',
+            datastore_version           : '1.0.0',
+            navigation_version          : '2.5.2',
+            room_version                : "2.5.0",
+            swiperefreshlayout_version  : '1.1.0',
+            banner_version              : '2.2.2',
+            okhttp_version              : '4.10.0',
+            retrofit_version            : '2.9.0',
+            rxjava_version              : '2.2.3',
+            rxandroid_version           : '2.1.1',
+            autodispose_version         : '1.0.0-RC2',
+            gson_version                : '2.10.1',
+            eventbus_version            : '3.3.1',
+            glide_version               : '4.14.2',
+            google_scan_version         : '16.2.0',
+            camerax_version             : '1.2.0',
+            flexbox_version             : '3.0.0',
+            bugly_version               : '4.1.9.2',
+            base_adapter_version        : '3.0.4',
+            rxpermissions2_version      : '0.9.5@aar',
+            google_guava_version        : '31.1-android'
+    ]
+
+    dependencies = [
+            kotlinx_coroutines_core            : "org.jetbrains.kotlinx:kotlinx-coroutines-core:${version['kotlinx_coroutines_version']}",
+            kotlinx_coroutines_android         : "org.jetbrains.kotlinx:kotlinx-coroutines-android:${version['kotlinx_coroutines_version']}",
+            lifecycle_runtime_ktx              : "androidx.lifecycle:lifecycle-runtime-ktx:${version['lifecycle_version']}",
+            lifecycle_viewmodel_ktx            : "androidx.lifecycle:lifecycle-viewmodel-ktx:${version['lifecycle_version']}",
+            lifecycle_livedata_ktx             : "androidx.lifecycle:lifecycle-livedata-ktx:${version['lifecycle_version']}",
+            retrofit2_kotlin_coroutines_adapter: "com.jakewharton.retrofit:retrofit2-kotlin-coroutines-adapter:${version['retrofit2_coroutines_version']}",
+            splashscreen                       : "androidx.core:core-splashscreen:${version['splashscreen_version']}",
+            datastore_preferences              : "androidx.datastore:datastore-preferences:${version['datastore_version']}",
+            datastore_preferences_core         : "androidx.datastore:datastore-preferences-core:${version['datastore_version']}",
+            banner                             : "io.github.youth5201314:banner:${version['banner_version']}",
+            navigation_fragment                : "androidx.navigation:navigation-fragment:${version['navigation_version']}",
+            navigation_ui                      : "androidx.navigation:navigation-ui:${version['navigation_version']}",
+            swiperefreshlayout                 : "androidx.swiperefreshlayout:swiperefreshlayout:${version['swiperefreshlayout_version']}",
+            okhttp                             : "com.squareup.okhttp3:okhttp:${version['okhttp_version']}",
+            okhttp_log                         : "com.squareup.okhttp3:logging-interceptor:${version['okhttp_version']}",
+            retrofit2                          : "com.squareup.retrofit2:retrofit:${version['retrofit_version']}",
+            retrofit2_gson                     : "com.squareup.retrofit2:converter-gson:${version['retrofit_version']}",
+            retrofit2_rxjava                   : "com.squareup.retrofit2:adapter-rxjava2:${version['retrofit_version']}",
+            rxjava2                            : "io.reactivex.rxjava2:rxjava:${version['rxjava_version']}",
+            rxjava2_rxandroid                  : "io.reactivex.rxjava2:rxandroid:${version['rxandroid_version']}",
+            autodispose                        : "com.uber.autodispose:autodispose-android-archcomponents:${version['autodispose_version']}",
+            gson                               : "com.google.code.gson:gson:${version['gson_version']}",
+            room                               : "androidx.room:room-runtime:${version['room_version']}",
+            room_compiler                      : "androidx.room:room-compiler:${version['room_version']}",
+            room_rxjava2                       : "androidx.room:room-rxjava2:${version['room_version']}",
+            eventbus                           : "org.greenrobot:eventbus:${version['eventbus_version']}",
+            glide                              : "com.github.bumptech.glide:glide:${version['glide_version']}",
+            glide_bumptech                     : "com.github.bumptech.glide:compiler:${version['glide_version']}",
+            google_scan                        : "com.google.mlkit:barcode-scanning:${version['google_scan_version']}",
+            camera_core                        : "androidx.camera:camera-core:${version['camerax_version']}",
+            camera_camera2                     : "androidx.camera:camera-camera2:${version['camerax_version']}",
+            camera_lifecycle                   : "androidx.camera:camera-lifecycle:${version['camerax_version']}",
+            camera_view                        : "androidx.camera:camera-view:${version['camerax_version']}",
+            flexbox                            : "com.google.android.flexbox:flexbox:${version['flexbox_version']}",
+            bugly                              : "com.tencent.bugly:crashreport:${version['bugly_version']}",
+            base_adapter                       : "com.github.CymChad:BaseRecyclerViewAdapterHelper:${version['base_adapter_version']}",
+            rxpermissions2                     : "com.tbruyelle.rxpermissions2:rxpermissions:${version['rxpermissions2_version']}",
+            google_guava                       : "com.google.guava:guava:${version['google_guava_version']}",
+            wechat_login                       : "com.tencent.mm.opensdk:wechat-sdk-android:+"
+    ]
+
+    api = [
+            //公桩本地环境
+            local_url           : '"http://pay-test-api.bjev520.com"',
+            //私桩本地环境
+            local_personal_url  : '"http://pile-test-api.bjev520.com"',
+
+            //公桩测试环境
+            debug_url           : '"http://pay-test-api.bjev520.com"',
+            //私桩测试环境
+            debug_personal_url  : '"http://pile-test-api.bjev520.com"',
+
+            //公桩生产环境
+            release_url         : '"https://pay-api.bjev520.com"',
+            //私桩生产环境
+            release_personal_url: '"https://yw-api.bjev520.com"',
+    ]
+
+}
