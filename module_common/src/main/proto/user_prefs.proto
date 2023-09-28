@@ -1,0 +1,11 @@
+syntax = "proto3";
+
+option java_package = "com.gaia.charger";
+option java_multiple_files = true;
+
+message UserPreferences {
+  bool show_completed = 1;
+  int32 age = 2;
+  string name = 3;
+  float price = 4;
+}

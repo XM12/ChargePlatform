@@ -2,52 +2,17 @@ plugins {
     id 'com.android.application'
     id 'org.jetbrains.kotlin.android'
 }
-apply from: rootProject.file("channel.gradle")
+apply from: rootProject.file("android.gradle")
 
 android {
     namespace rootProject.ext.android['applicationId']
-    compileSdk rootProject.ext.android['defualt_compileSdk']
-
     def code = getVersionCode()
     def name = getVersionName()
 
     defaultConfig {
         applicationId rootProject.ext.android['applicationId']
-        minSdk rootProject.ext.android['defualt_minSdk']
-        targetSdk rootProject.ext.android['defualt_targetSdk']
-
         versionCode code
         versionName name
-
-        multiDexEnabled true
-        resConfigs("en", "zh", "zh-rCN")
-
-        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
-
-        ndk {
-            //noinspection ChromeOsAbiSupport
-            abiFilters "armeabi-v7a", "arm64-v8a"
-        }
-    }
-
-    signingConfigs {
-        debug {
-            storeFile file('..\\key\\charge.jks')
-            storePassword 'charge'
-            keyPassword 'charge'
-            keyAlias 'key0'
-            v1SigningEnabled true
-            v2SigningEnabled true
-        }
-
-        release {
-            storeFile file('..\\key\\charge.jks')
-            storePassword 'charge'
-            keyPassword 'charge'
-            keyAlias 'key0'
-            v1SigningEnabled true
-            v2SigningEnabled true
-        }
     }
 
     buildTypes {
@@ -58,9 +23,9 @@ android {
             zipAlignEnabled true
             signingConfig signingConfigs.release
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
-            applicationIdSuffix '.release'
-            buildConfigField "String", "LOCAL_URL", rootProject.ext.api['local_url']
-            buildConfigField "String", "LOCAL_PERSONAL_URL", rootProject.ext.api['local_personal_url']
+            applicationIdSuffix '.local'
+            buildConfigField "String", "BASE_URL", rootProject.ext.api['local_url']
+            buildConfigField "String", "BASE_PERSONAL_URL", rootProject.ext.api['local_personal_url']
             manifestPlaceholders = [CHANNEL_VALUE: "none"]
         }
 
@@ -72,8 +37,8 @@ android {
             signingConfig signingConfigs.debug
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
             applicationIdSuffix '.debug'
-            buildConfigField "String", "DEBUG_URL", rootProject.ext.api['debug_url']
-            buildConfigField "String", "DEBUG_PERSONAL_URL", rootProject.ext.api['debug_personal_url']
+            buildConfigField "String", "BASE_URL", rootProject.ext.api['debug_url']
+            buildConfigField "String", "BASE_PERSONAL_URL", rootProject.ext.api['debug_personal_url']
             manifestPlaceholders = [CHANNEL_VALUE: "none"]
         }
 
@@ -86,19 +51,21 @@ android {
             signingConfig signingConfigs.release
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
             applicationIdSuffix '.release'
-            buildConfigField "String", "RELEASE_URL", rootProject.ext.api['release_url']
-            buildConfigField "String", "RELEASE_PERSONAL_URL", rootProject.ext.api['release_personal_url']
+            buildConfigField "String", "BASE_URL", rootProject.ext.api['release_url']
+            buildConfigField "String", "BASE_PERSONAL_URL", rootProject.ext.api['release_personal_url']
             manifestPlaceholders = [CHANNEL_VALUE: "none"]
         }
     }
 
-    compileOptions {
-        sourceCompatibility JavaVersion.VERSION_11
-        targetCompatibility JavaVersion.VERSION_11
-    }
-
-    kotlinOptions {
-        jvmTarget = '11'
+    applicationVariants.all { variant ->
+        variant.outputs.all {
+            if (variant.buildType.name == 'release') {
+                outputFileName = "charge-v${variant.mergedFlavor.versionName}-${new Date().format('MMdd')}-${variant.productFlavors[0].name}-${variant.buildType.name}"
+            } else if (variant.buildType.name == 'debug') {
+                outputFileName = "charge-v${variant.mergedFlavor.versionName}-${new Date().format('MMdd')}-${variant.productFlavors[0].name}-${variant.buildType.name}"
+            }
+            outputFileName += ".apk"
+        }
     }
 }
 
@@ -139,4 +106,9 @@ dependencies {
     testImplementation 'junit:junit:4.13.2'
     androidTestImplementation 'androidx.test.ext:junit:1.1.3'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.4.0'
+
+    api project(':module_public_pile')
+    api project(':module_forum')
+    api project(':module_personal_pile')
+    api project(':module_user')
 }

@@ -24,8 +24,8 @@ dependencyResolutionManagement {
 }
 rootProject.name = "ChargePlatform"
 include ':app'
-include ':module_common'
 include ':module_basic'
+include ':module_common'
 include ':module_public_pile'
 include ':module_personal_pile'
 include ':module_forum'

@@ -1,4 +1,4 @@
-package com.gaia.chargeplatform
+package com.gaia.chargebar
 
 import org.junit.Test
 

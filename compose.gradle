@@ -1,0 +1,20 @@
+dependencies {
+    def composeBom = platform('androidx.compose:compose-bom:2023.01.00')
+    api composeBom
+    androidTestApi composeBom
+    api 'androidx.compose.material3:material3'
+    api 'androidx.compose.material:material'
+    api 'androidx.compose.foundation:foundation'
+    api 'androidx.compose.ui:ui'
+    api 'androidx.compose.ui:ui-tooling-preview'
+    debugApi 'androidx.compose.ui:ui-tooling'
+    androidTestApi 'androidx.compose.ui:ui-test-junit4'
+    debugApi 'androidx.compose.ui:ui-test-manifest'
+    api 'androidx.compose.material:material-icons-core'
+    api 'androidx.compose.material:material-icons-extended'
+    api 'androidx.compose.material3:material3-window-size-class'
+    api 'androidx.activity:activity-compose:1.6.1'
+    api 'androidx.lifecycle:lifecycle-viewmodel-compose:2.5.1'
+    api 'androidx.compose.runtime:runtime-livedata'
+    api 'androidx.compose.runtime:runtime-rxjava2'
+}

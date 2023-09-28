@@ -1,29 +1,37 @@
 package com.gaia.basic.net
 
-import android.util.Log
+import com.gaia.basic.BuildConfig
+import com.gaia.basic.api.ForumApi
+import com.gaia.basic.api.PersonalPileApi
+import com.gaia.basic.api.PublicPileApi
+import com.gaia.basic.api.UserApi
 import com.jakewharton.retrofit2.adapter.kotlin.coroutines.CoroutineCallAdapterFactory
 import okhttp3.OkHttpClient
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 import java.util.concurrent.TimeUnit
 
-class RetrofitClient private constructor() {
-//    private val service: RetrofitService
+class ApiClient private constructor() {
+    private val publishedApi: PublicPileApi
+    private val forumApi: ForumApi
+    private val personalPileApi: PersonalPileApi
+    private val userApi: UserApi
 
     companion object {
         private const val TAG = "RetrofitClient"
         private const val CONNECT_TIMEOUT = 30L
         private const val READ_TIMEOUT = 10L
 
-        val instance: RetrofitClient by lazy(mode = LazyThreadSafetyMode.SYNCHRONIZED) {
-            Log.e(TAG, "初始化RetrofitClient")
-            RetrofitClient()
+        val instance: ApiClient by lazy(mode = LazyThreadSafetyMode.SYNCHRONIZED) {
+            ApiClient()
         }
     }
 
     init {
-        Log.e(TAG, "初始化Retrofit")
-//        service = getService("", RetrofitService::class.java)
+        publishedApi = getService(BuildConfig.BASE_URL, PublicPileApi::class.java)
+        forumApi = getService(BuildConfig.BASE_URL, ForumApi::class.java)
+        personalPileApi = getService(BuildConfig.BASE_PERSONAL_URL, PersonalPileApi::class.java)
+        userApi = getService(BuildConfig.BASE_URL, UserApi::class.java)
     }
 
     private fun create(url: String): Retrofit {
