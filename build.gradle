@@ -1,6 +1,6 @@
 buildscript {
     dependencies {
-
+        classpath "com.alibaba:arouter-register:1.0.2"
     }
 }
 

@@ -6,7 +6,7 @@ apply from: rootProject.file("android.gradle")
 
 android {
     namespace 'com.gaia.personal_pile'
-    resourcePrefix 'personal'
+    resourcePrefix 'pile'
 
     defaultConfig {
         consumerProguardFiles "consumer-rules.pro"

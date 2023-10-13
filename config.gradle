@@ -35,7 +35,8 @@ ext {
             bugly_version               : '4.1.9.2',
             base_adapter_version        : '3.0.4',
             rxpermissions2_version      : '0.9.5@aar',
-            google_guava_version        : '31.1-android'
+            google_guava_version        : '31.1-android',
+            arouter_version             : '1.5.2'
     ]
 
     dependencies = [
@@ -80,7 +81,9 @@ ext {
             bugly                              : "com.tencent.bugly:crashreport:${version['bugly_version']}",
             base_adapter                       : "com.github.CymChad:BaseRecyclerViewAdapterHelper:${version['base_adapter_version']}",
             rxpermissions2                     : "com.tbruyelle.rxpermissions2:rxpermissions:${version['rxpermissions2_version']}",
-            wechat_login                       : "com.tencent.mm.opensdk:wechat-sdk-android:+"
+            wechat_login                       : "com.tencent.mm.opensdk:wechat-sdk-android:+",
+            arouter_api                        : "com.alibaba:arouter-api:${version['arouter_version']}",
+            arouter_compiler                   : "com.alibaba:arouter-api:${version['arouter_version']}",
     ]
 
     api = [

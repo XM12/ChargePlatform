@@ -1,22 +1,28 @@
 package com.gaia.public_pile
 
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
-import android.view.View
 import android.view.ViewGroup
+import com.gaia.common.base.BaseViewModel
+import com.gaia.common.base.ui.BaseFragment
+import com.gaia.public_pile.databinding.PublicFragmentMapBinding
 
-class MapFragment : Fragment() {
+class MapFragment : BaseFragment<PublicFragmentMapBinding, BaseViewModel>() {
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
+    override fun getViewBinding(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): PublicFragmentMapBinding {
+        return PublicFragmentMapBinding.inflate(inflater)
     }
 
-    override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View? {
-        return inflater.inflate(R.layout.fragment_map, container, false)
+    override fun providerVMClass(): Class<BaseViewModel>? {
+        return null
+    }
+
+    override fun initView() {
+
+    }
+
+    override fun initData() {
+
     }
 
 }

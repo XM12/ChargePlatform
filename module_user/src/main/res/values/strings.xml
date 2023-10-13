@@ -1,3 +1,24 @@
 <resources>
-    <string name="app_name">ChargePlatform</string>
+    <string name="user_hi">Hi！</string>
+    <string name="user_welcome">欢迎来到充电吧</string>
+    <string name="user_sms_code_login">验证码登录</string>
+    <string name="user_password_login">密码登录</string>
+    <string name="user_login">登录</string>
+    <string name="user_protocol">同意《用户使用协议》《隐私政策》</string>
+    <string name="user_input_phone_hint">请输入手机号</string>
+    <string name="user_input_password_hint">请输入密码</string>
+    <string name="user_input_sms_code_hint">请输入验证码</string>
+    <string name="user_other_login_type">其他登录方式</string>
+    <string name="user_personal_balance">个人余额</string>
+    <string name="user_enterprise_balance">企业余额</string>
+    <string name="user_recharge">充值</string>
+    <string name="user_order">订单</string>
+    <string name="user_cards_and_coupons">卡券</string>
+    <string name="user_invoice">发票</string>
+    <string name="user_vehicle">我的爱车</string>
+    <string name="user_pay_setting">支付设置</string>
+    <string name="user_refund">退款</string>
+    <string name="user_message">消息</string>
+    <string name="user_customer_service">联系客服</string>
+    <string name="user_setting">设置</string>
 </resources>
