@@ -1,0 +1,20 @@
+{
+  "version": 3,
+  "artifactType": {
+    "type": "APK",
+    "kind": "Directory"
+  },
+  "applicationId": "com.gaia.chargebar.release",
+  "variantName": "noneRelease",
+  "elements": [
+    {
+      "type": "SINGLE",
+      "filters": [],
+      "attributes": [],
+      "versionCode": 6,
+      "versionName": "1.0.0",
+      "outputFile": "charge_v1.0.0_1031_none_release.apk"
+    }
+  ],
+  "elementType": "File"
+}

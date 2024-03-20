@@ -1,8 +1,8 @@
 ext {
     android = [
             applicationId      : 'com.gaia.chargebar',
-            defualt_compileSdk : 33,
-            defualt_targetSdk  : 33,
+            defualt_compileSdk : 34,
+            defualt_targetSdk  : 34,
             defualt_minSdk     : 24,
             defualt_versionCode: 1,
             defualt_versionName: '1.0.0'
@@ -56,6 +56,7 @@ ext {
             navigation_ui                      : "androidx.navigation:navigation-ui:${version['navigation_version']}",
             room                               : "androidx.room:room-runtime:${version['room_version']}",
             room_compiler                      : "androidx.room:room-compiler:${version['room_version']}",
+            room_ktx                           : "androidx.room:room-ktx:${version['room_version']}",
             room_rxjava2                       : "androidx.room:room-rxjava2:${version['room_version']}",
             google_scan                        : "com.google.mlkit:barcode-scanning:${version['google_scan_version']}",
             camera_core                        : "androidx.camera:camera-core:${version['camerax_version']}",

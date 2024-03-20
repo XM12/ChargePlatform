@@ -30,8 +30,6 @@ abstract class BaseFragment<T : ViewBinding, VM : BaseViewModel>  : Fragment() {
             viewModel = ViewModelProvider(this)[it]
         }
         binding = getViewBinding(inflater, container, savedInstanceState)
-        initView()
-        initData()
         return binding.root
     }
 
