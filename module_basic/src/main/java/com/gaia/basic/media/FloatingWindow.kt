@@ -39,8 +39,8 @@ class FloatingWindow(private val context: Context) : View.OnTouchListener {
             format = PixelFormat.RGBA_8888
             flags = WindowManager.LayoutParams.FLAG_NOT_TOUCH_MODAL or WindowManager.LayoutParams.FLAG_NOT_FOCUSABLE
             //位置大小设置
-            width = 10
-            height = 10
+            width = 400
+            height = 400
             gravity = Gravity.START or Gravity.TOP
             //设置剧中屏幕显示
             x = outMetrics.widthPixels / 2 - width / 2

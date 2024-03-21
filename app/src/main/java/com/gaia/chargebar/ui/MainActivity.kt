@@ -55,8 +55,7 @@ class MainActivity : BaseActivity<ActivityMainBinding, MainVM>() {
         mineFragment = MineFragment()
         switchFragment(mapfragment)
 
-        val floatingWindow = FloatingWindow(this)
-        floatingWindow.initWindow()
+        startService(Intent(this,VideoService::class.java))
     }
 
     private fun switchFragment(fragment: Fragment) {

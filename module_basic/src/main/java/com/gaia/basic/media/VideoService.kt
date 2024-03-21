@@ -5,10 +5,11 @@ import android.content.Intent
 import android.os.IBinder
 
 class VideoService : Service() {
-    private val floatingWindow = FloatingWindow(this)
+    private lateinit var floatingWindow: FloatingWindow
 
     override fun onCreate() {
         super.onCreate()
+        floatingWindow = FloatingWindow(this)
         floatingWindow.initWindow()
     }
 

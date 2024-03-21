@@ -10,7 +10,6 @@
     <application>
         <service
             android:name=".media.VideoService"
-            android:enabled="false"
             android:exported="false"
             android:foregroundServiceType="camera"/>
     </application>
