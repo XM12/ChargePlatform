@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="common_app_background">#F7F9FCFF</color>
+    <color name="common_status_bar">@android:color/transparent</color>
+    <color name="common_black">#FF000000</color>
+    <color name="common_white">#FFFFFFFF</color>
+    <color name="common_blue">#FF1E7BFE</color>
+    <color name="common_main_black">#FF252626</color>
+    <color name="common_main_gray">#FF646668</color>
+    <color name="common_sub_gray">#FF9B9DA0</color>
+    <color name="common_sub_gray_1">#FF7E7E7F</color>
+    <color name="common_edit_hint">#FFC2C4C7</color>
+    <color name="common_dividing_line">#FF9B9DA0</color>
+    <color name="common_dividing_line_1">#FFF0F3F7</color>
+</resources>

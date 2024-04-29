@@ -7,25 +7,25 @@
 
     <fragment
         android:id="@+id/navigation_home"
-        android:name="com.gaia.public_pile.MapFragment"
+        android:name="com.pinyou.public_pile.MapFragment"
         android:label="@string/main_home_title"
         tools:layout="@layout/public_fragment_map" />
 
     <fragment
         android:id="@+id/navigation_forum"
-        android:name="com.gaia.forum.ForumFragment"
+        android:name="com.pinyou.forum.ForumFragment"
         android:label="@string/main_forum_title"
         tools:layout="@layout/forum_fragment_forum" />
 
     <fragment
         android:id="@+id/navigation_pile"
-        android:name="com.gaia.personal_pile.PersonalPileFragment"
+        android:name="com.pinyou.personal_pile.PersonalPileFragment"
         android:label="@string/main_pile_title"
         tools:layout="@layout/public_fragment_map" />
 
     <fragment
         android:id="@+id/navigation_mine"
-        android:name="com.gaia.user.MineFragment"
+        android:name="com.pinyou.user.MineFragment"
         android:label="@string/main_mine_title"
         tools:layout="@layout/forum_fragment_forum" />
 

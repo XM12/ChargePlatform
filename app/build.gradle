@@ -23,7 +23,6 @@ android {
             zipAlignEnabled true
             signingConfig signingConfigs.release
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
-            applicationIdSuffix '.local'
             buildConfigField "String", "BASE_URL", rootProject.ext.api['local_url']
             buildConfigField "String", "BASE_PERSONAL_URL", rootProject.ext.api['local_personal_url']
             manifestPlaceholders = [CHANNEL_VALUE: "none"]
@@ -36,7 +35,6 @@ android {
             zipAlignEnabled true
             signingConfig signingConfigs.debug
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
-            applicationIdSuffix '.debug'
             buildConfigField "String", "BASE_URL", rootProject.ext.api['debug_url']
             buildConfigField "String", "BASE_PERSONAL_URL", rootProject.ext.api['debug_personal_url']
             manifestPlaceholders = [CHANNEL_VALUE: "none"]
@@ -50,15 +48,14 @@ android {
             debuggable false
             signingConfig signingConfigs.release
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
-            applicationIdSuffix '.release'
             buildConfigField "String", "BASE_URL", rootProject.ext.api['release_url']
             buildConfigField "String", "BASE_PERSONAL_URL", rootProject.ext.api['release_personal_url']
             manifestPlaceholders = [CHANNEL_VALUE: "none"]
         }
     }
 
-    applicationVariants.all { variant ->
-        variant.outputs.all {
+    applicationVariants.configureEach { variant ->
+        variant.outputs.configureEach {
             outputFileName = "charge_v${variant.mergedFlavor.versionName}_${new Date().format('MMdd')}_${variant.productFlavors[0].name}_${variant.buildType.name}"
             outputFileName += ".apk"
         }
@@ -102,9 +99,8 @@ dependencies {
     testImplementation 'junit:junit:4.13.2'
     androidTestImplementation 'androidx.test.ext:junit:1.1.5'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.5.1'
-
-    api project(':module_public_pile')
-    api project(':module_forum')
-    api project(':module_personal_pile')
-    api project(':module_user')
+    api project(':user')
+    api project(':forum')
+    api project(':public_pile')
+    api project(':personal_pile')
 }

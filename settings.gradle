@@ -24,15 +24,16 @@ dependencyResolutionManagement {
 }
 rootProject.name = "ChargePlatform"
 include ':app'
-include ':module_basic'
-include ':module_common'
-include ':module_public_pile'
-include ':module_personal_pile'
-include ':module_forum'
-include ':module_user'
+include ':basic'
+include ':common'
+include ':user'
+include ':public_pile'
+include ':personal_pile'
+include ':forum'
+include ':database'
+include ':xlog'
 
 include ':local_repo:ali_auth_number_aar'
 include ':local_repo:ali_logger_aar'
 include ':local_repo:ali_main_aar'
 include ':local_repo:ble_control_pile'
-include ':module_db'

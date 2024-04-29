@@ -1,6 +1,6 @@
 ext {
     android = [
-            applicationId      : 'com.gaia.chargebar',
+            applicationId      : 'com.pinyou.chargebar',
             defualt_compileSdk : 34,
             defualt_targetSdk  : 34,
             defualt_minSdk     : 24,
@@ -84,7 +84,7 @@ ext {
             rxpermissions2                     : "com.tbruyelle.rxpermissions2:rxpermissions:${version['rxpermissions2_version']}",
             wechat_login                       : "com.tencent.mm.opensdk:wechat-sdk-android:+",
             arouter_api                        : "com.alibaba:arouter-api:${version['arouter_version']}",
-            arouter_compiler                   : "com.alibaba:arouter-api:${version['arouter_version']}",
+            arouter_compiler                   : "com.alibaba:arouter-compiler:${version['arouter_version']}",
     ]
 
     api = [
