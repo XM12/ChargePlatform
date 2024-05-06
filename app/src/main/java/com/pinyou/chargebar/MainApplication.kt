@@ -2,10 +2,10 @@ package com.pinyou.chargebar
 
 import android.app.Application
 import com.alibaba.android.arouter.launcher.ARouter
+import com.pinyou.basic.log.CrashHandler
 import com.pinyou.db.AppDbManager
 import com.pinyou.public_pile.PublicPileManager
-import com.pinyou.xlog.XlogManager
-import com.tencent.mm.opensdk.utils.Log
+import com.pinyou.basic.log.XlogManager
 
 class MainApplication : Application() {
     companion object {
@@ -18,5 +18,7 @@ class MainApplication : Application() {
         PublicPileManager.authorizePrivacyAgreement(this)
         AppDbManager.instance.init(this)
         XlogManager.init(this)
+        CrashHandler.init(this)
+        XlogManager.flush()
     }
 }

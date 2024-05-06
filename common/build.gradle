@@ -24,7 +24,6 @@ dependencies {
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.5.1'
     api project(':basic')
 
-
     //通过module方式引入aar
     api project(path: ':local_repo:ali_auth_number_aar')
     api project(path: ':local_repo:ali_logger_aar')

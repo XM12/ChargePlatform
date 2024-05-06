@@ -20,6 +20,12 @@ android {
             }
         }
     }
+
+    sourceSets {
+        main {
+            jniLibs.srcDirs = ['libs']
+        }
+    }
 }
 
 dependencies {
@@ -88,8 +94,6 @@ dependencies {
     //arouter组件化路由框架
     api rootProject.ext.dependencies['arouter_api']
     kapt rootProject.ext.dependencies['arouter_compiler']
-
-    api project(':xlog')
 }
 
 protobuf {

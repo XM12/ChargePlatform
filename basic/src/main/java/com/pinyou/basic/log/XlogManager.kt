@@ -1,10 +1,10 @@
-package com.pinyou.xlog
+package com.pinyou.basic.log
 
 import android.content.Context
+import com.pinyou.basic.BuildConfig
 import com.tencent.mars.xlog.Log
 import com.tencent.mars.xlog.Xlog
 import java.io.File
-
 
 object XlogManager {
 
@@ -33,6 +33,12 @@ object XlogManager {
         )
         Log.setLogImp(xlog)
         Log.setConsoleLogOpen(BuildConfig.DEBUG)
+    }
+
+    /**
+     * 将.mmap3文件缓存的日志写入.xlog文件中
+     * */
+    fun flush() {
         Log.appenderFlush()
     }
 

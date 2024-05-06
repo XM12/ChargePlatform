@@ -31,7 +31,7 @@ include ':public_pile'
 include ':personal_pile'
 include ':forum'
 include ':database'
-include ':xlog'
+//include ':xlog'
 
 include ':local_repo:ali_auth_number_aar'
 include ':local_repo:ali_logger_aar'

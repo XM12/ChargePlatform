@@ -46,7 +46,7 @@ class MainActivity : BaseActivity<ActivityMainBinding, MainVM>() {
         mapfragment = MapFragment()
         forumFragment = ForumFragment()
         personalPileFragment = PersonalPileFragment()
-        mineFragment = MineFragment()
+//        mineFragment = MineFragment()
         switchFragment(mapfragment)
     }
 

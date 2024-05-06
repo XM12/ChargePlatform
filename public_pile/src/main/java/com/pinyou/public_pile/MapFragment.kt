@@ -11,7 +11,7 @@ import com.amap.api.maps.AMapUtils
 import com.amap.api.maps.model.LatLng
 import com.amap.api.maps.model.LatLngBounds
 import com.amap.api.maps.model.Marker
-import com.pinyou.basic.utils.LogUtils
+import com.pinyou.basic.log.LogUtils
 import com.pinyou.common.base.BaseViewModel
 import com.pinyou.common.base.ui.BaseFragment
 import com.pinyou.db.AppDbManager

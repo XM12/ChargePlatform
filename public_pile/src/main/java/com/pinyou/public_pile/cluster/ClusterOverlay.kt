@@ -14,7 +14,7 @@ import com.amap.api.maps.model.LatLng
 import com.amap.api.maps.model.LatLngBounds
 import com.amap.api.maps.model.Marker
 import com.amap.api.maps.model.MarkerOptions
-import com.pinyou.basic.utils.LogUtils
+import com.pinyou.basic.log.LogUtils
 import com.pinyou.basic.utils.ScreenUtils
 
 class ClusterOverlay(private val aMap: AMap) : OnMarkerClickListener {
