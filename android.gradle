@@ -95,4 +95,10 @@ android {
     productFlavors.all { flavor ->
         flavor.manifestPlaceholders.put("APP_CHANNEL_VALUE", name)
     }
+
+    packagingOptions {
+        pickFirst 'lib/armeabi-v7a/libc++_shared.so'
+        pickFirst 'lib/arm64-v8a/libc++_shared.so'
+    }
+
 }

@@ -12,7 +12,7 @@
         android:label="@string/app_name"
         android:supportsRtl="true"
         android:theme="@style/Theme.ChargePlatform"
-        tools:replace="android:appComponentFactory"
+        tools:replace="android:appComponentFactory,android:allowBackup"
         tools:targetApi="31">
 
         <activity
