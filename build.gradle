@@ -1,6 +1,8 @@
 buildscript {
     dependencies {
         classpath "com.alibaba:arouter-register:1.0.2"
+        //阿里云emas-services插件
+        classpath 'com.aliyun.ams:emas-services:1.0.4'
     }
 }
 

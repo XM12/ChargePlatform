@@ -2,6 +2,7 @@ plugins {
     id 'com.android.application'
     id 'org.jetbrains.kotlin.android'
 }
+apply plugin: 'com.aliyun.ams.emas-services'
 apply from: rootProject.file("android.gradle")
 
 android {
